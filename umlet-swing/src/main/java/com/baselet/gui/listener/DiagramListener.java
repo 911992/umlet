@@ -14,6 +14,7 @@ import com.baselet.control.Main;
 import com.baselet.control.basics.Converter;
 import com.baselet.control.basics.geom.Point;
 import com.baselet.control.constants.SystemInfo;
+import com.baselet.control.shared_attrib.DiagramSharedAttributesHandler;
 import com.baselet.diagram.CurrentDiagram;
 import com.baselet.diagram.DiagramHandler;
 import com.baselet.diagram.SelectorFrame;
@@ -43,7 +44,7 @@ public class DiagramListener extends UniversalListener implements MouseWheelList
 			h.getDrawPanel().getSelector().deselectAllWithoutUpdatePropertyPanel();
 		}
 		selector.updateSelectorInformation(); // after everything is deselected updateSelectorInformation (to update property panel content)
-
+                DiagramSharedAttributesHandler.process_text(handler.getHelpText());
 		if ((me.getModifiers() & SystemInfo.META_KEY.getMask()) != 0) {
 			SelectorFrame selframe = selector.getSelectorFrame();
 			selframe.setLocation(getOffset(me).getX(), getOffset(me).getY());
