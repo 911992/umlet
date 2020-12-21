@@ -5,6 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.baselet.control.constants.Constants;
+import com.baselet.control.shared_attrib.DiagramSharedAttributesHandler;
 import com.baselet.control.util.Utils;
 import com.baselet.diagram.DiagramHandler;
 
@@ -14,6 +15,8 @@ public class HelpPanelChanged extends Command {
 
 	public HelpPanelChanged(String text) {
 		changed_to = text;
+                //processing shared attribs if requried
+                DiagramSharedAttributesHandler.process_text(text);
 	}
 
 	private HelpPanelChanged(String changed_from, String changed_to) {

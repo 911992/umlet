@@ -22,6 +22,7 @@ import com.baselet.control.basics.Converter;
 import com.baselet.control.basics.geom.Point;
 import com.baselet.control.constants.Constants;
 import com.baselet.control.enums.Program;
+import com.baselet.control.shared_attrib.DiagramSharedAttributesHandler;
 import com.baselet.diagram.io.DiagramFileHandler;
 import com.baselet.element.ComponentSwing;
 import com.baselet.element.NewGridElement;
@@ -291,6 +292,7 @@ public class DiagramHandler {
 
 	public void setHelpText(String helptext) {
 		this.helptext = helptext;
+                DiagramSharedAttributesHandler.process_text(helptext);
 	}
 
 	public String getHelpText() {

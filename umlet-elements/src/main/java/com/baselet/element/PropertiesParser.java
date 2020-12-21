@@ -8,6 +8,7 @@ import java.util.Map;
 
 import com.baselet.control.basics.geom.DimensionDouble;
 import com.baselet.control.enums.ElementStyle;
+import com.baselet.control.shared_attrib.DiagramSharedAttributesHandler;
 import com.baselet.element.facet.Facet;
 import com.baselet.element.facet.PropertiesParserState;
 
@@ -25,6 +26,12 @@ public class PropertiesParser {
 
 	public static void parsePropertiesAndHandleFacets(NewGridElement element, PropertiesParserState state) {
 		List<String> propertiesText = element.getPanelAttributesAsList();
+                if(DiagramSharedAttributesHandler.has_any_includes()){
+                    //new requried, since propertiesText is immutable
+                    ArrayList<String> _ls = new ArrayList<>(propertiesText.size());
+                    DiagramSharedAttributesHandler.process_property_text(propertiesText,_ls);
+                    propertiesText = _ls;
+                }
 		doPreparsing(element, state, propertiesText); // at first handle autoresize (which possibly changes elementsize) and calc the textblock size
 		parseFacets(element, state, propertiesText, true);
 	}

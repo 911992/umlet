@@ -282,7 +282,7 @@ public class MenuFactorySwing extends MenuFactory {
 		JMenu menu = new JMenu(name);
 		menu.add(createJMenuItem(false, "default", name, null));
 		for (Theme.PredefinedColors color : ThemeFactory.getCurrentTheme().getColorMap().keySet()) {
-			JMenuItem item = createJMenuItem(false, color.name(), name, color.name());
+			JMenuItem item = createJMenuItem(false, color.name(), name, color);
 			menu.add(item);
 			item.setIcon(new PlainColorIcon(color.name()));
 		}
